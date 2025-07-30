@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server"
 
-export async function GET(request: Request, { params }: { params: { identityId: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ identityId: string }> }) {
   try {
-    const { identityId } = params
+    const { identityId } = await params
 
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 600))
